@@ -1,4 +1,4 @@
-import {User} from '../db.js'
+import {User, App} from '../db.js'
 import express from 'express'
 
 const router = express.Router()
@@ -20,6 +20,24 @@ router.post('/', (req,res) => {
   })
 
   u.save().then(u => res.json(u.toJSON()) )
+})
+
+router.post('/:id/apps', async(req,res) => {
+  const app = new App({
+    name: req.body.name,
+    owner: req.params.id
+  })
+  app.save().then(o => res.json(o.toJSON()))
+})
+
+router.get('/:owner/apps/:id', async(req,res) => {
+  res.send(
+    (await App.findById(req.params.id)).toJSON()
+  )
+})
+
+router.get('/:owner/apps', async(req,res) => {
+  res.send(await App.find({owner: req.params.owner}))
 })
 
 export default router

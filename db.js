@@ -11,9 +11,12 @@ const userSchema = new Schema({
 
 export const User = mongoose.model('user', userSchema)
 
-const appsSchema = new Schema({
-
+const appSchema = new Schema({
+  name: String,
+  owner: {type: mongoose.Types.ObjectId, ref: "user"}
 })
+
+export const App = mongoose.model('app',appSchema)
 
 /*
 userSchema.pre('save', (next) => {
