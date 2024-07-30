@@ -1,0 +1,5 @@
+*.swp
+data/
+log
+.env
+node_modules

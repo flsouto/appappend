@@ -1,0 +1,19 @@
+alias @npm='docker-compose exec api npm'
+alias @jest='@npm run test'
+alias @logs='docker-compose logs -t'
+function @errs { 
+  docker-compose logs -t $1 | grep -i error
+}
+
+alias @sh='docker-compose exec api sh'
+alias @ps='docker-compose ps'
+alias @up='docker-compose up -d'
+function @alias(){ 
+  echo "alias $1"="'"$2"'" >> aliases
+  . aliases
+}
+alias @down='docker-compose down'
+alias @node='docker-compose exec api node'
+alias @jest!='@npm run clear-test'
+alias @log='cat log'
+alias @cache='docker-compose exec redis redis-cli GET'

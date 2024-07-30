@@ -1,0 +1,33 @@
+{
+  "name": "appappend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --verbose false -t",
+    "start": "nodemon index.js --exitcrash",
+    "clear-test": "CLEAR=1 npm run test"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./jest.boot.js"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jest": "^29.7.0",
+    "mongoose": "^8.5.1",
+    "node-fetch": "^3.3.2",
+    "node-request-context": "^1.0.5",
+    "redis": "^4.6.15",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
